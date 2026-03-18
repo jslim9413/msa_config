@@ -9,7 +9,9 @@
 # k8s
 spring:
   kafka:
-    bootstrap-servers: kafka-service:9092   # ✅ 이게 정식 키
+  
+    # 정식 키명칭
+    bootstrap-servers: kafka-service:9092   
 
     consumer:
       group-id: product-group
