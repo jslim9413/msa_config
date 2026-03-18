@@ -69,6 +69,10 @@ spring:
 #     username: root
 #     password: 123456789
 
+  jpa:
+    hibernate:
+      ddl-auto: update
+
   data:
     redis:
       host: redis-service
