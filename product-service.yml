@@ -9,9 +9,12 @@
 # k8s
 spring:
   kafka:
-    kafka-server: kafka-service:9092
+    bootstrap-servers: kafka-service:9092   # ✅ 이게 정식 키
+
     consumer:
-        group-id: product-group
-        auto-offset-reset: earliest
+      group-id: product-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
 
         
