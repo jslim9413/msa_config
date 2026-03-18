@@ -68,6 +68,12 @@ spring:
 #     url: jdbc:mariadb://mariadb-service:3306/inspire
 #     username: root
 #     password: 123456789
+  
+  # too many connection 문제
+  datasource:
+    hikari:
+      maximum-pool-size: 5
+      minimum-idle: 2
 
   jpa:
     hibernate:

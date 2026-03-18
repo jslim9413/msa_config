@@ -20,6 +20,9 @@
 # k8s
 spring:
   kafka:
+    listener:
+      concurrency: 1
+      
     bootstrap-servers: kafka-service:9092   # ⭐ 필수 수정
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer

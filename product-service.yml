@@ -10,6 +10,9 @@
 spring:
   kafka:
   
+    listener:
+      concurrency: 1
+  
     # 정식 키명칭
     bootstrap-servers: kafka-service:9092   
 
