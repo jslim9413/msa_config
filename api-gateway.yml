@@ -1,5 +1,5 @@
 server:
-    port: 8888
+    port: 8080
    
 spring:
   cloud:
@@ -53,7 +53,7 @@ jwt:
   
 
 # eureka client user service -> eureka server
-eureka:
-    client:
-        serviceUrl:
-            defaultZone: http://localhost:8761/eureka/
+# eureka:
+#     client:
+#         serviceUrl:
+#             defaultZone: http://localhost:8761/eureka/
