@@ -1,3 +1,71 @@
+# server:
+#     port: 8080
+   
+# spring:
+#   cloud:
+#     gateway:
+#         # cores 처리
+#         # 각 서비스 모듈은 웹브라우저와 직접 통신하지 않으므로 단일진입점인 gateway 담당
+#         globalcors:
+#             cors-configurations:
+#                 '[/**]':
+#                     allowedOrigins:
+#                         - 'http://localhost:3000'
+#                     allowedMethods: '*'
+#                     allowedHeaders: '*'
+#                     exposedHeaders: '*'
+#                     allowCredentials: true
+
+#         # eureka server 에 등록된 client 찾아서 사용자의 url_pattern을 매핑하는 작업 
+#         routes:
+#             - id: user-service
+#               predicates: 
+#                 - Path=/user-service/**
+#               filters:
+#                 # 첫번째 접두어를 제거하라는 의미 
+#                 # browser : http://server.xxxxx.shop/user-service/users/signIn
+#                 # inner   : http://server.xxxxx.shop/users/signIn
+#                 - StripPrefix=1 
+#               uri: lb://user-service
+
+#             - id: product-service
+#               predicates: 
+#                 - Path=/product-service/**
+#               filters:
+#                 # 첫번째 접두어를 제거하라는 의미 
+#                 # browser : http://server.xxxxx.shop/product-service/product/create
+#                 # inner   : http://server.xxxxx.shop/product/signIn
+#                 - StripPrefix=1 
+#               uri: lb://product-service
+
+#             - id: order-service
+#               predicates: 
+#                 - Path=/order-service/**
+#               filters:
+#                 # 첫번째 접두어를 제거하라는 의미 
+#                 # browser : http://server.xxxxx.shop/product-service/product/create
+#                 # inner   : http://server.xxxxx.shop/product/signIn
+#                 - StripPrefix=1 
+#               uri: lb://order-service
+                
+# jwt:
+#   secret: jslim-super-secret-key-for-jwt-123456789
+  
+
+# # eureka client user service -> eureka server
+# # eureka:
+# #     client:
+# #         serviceUrl:
+# #             defaultZone: http://localhost:8761/eureka/
+
+
+
+
+
+
+
+
+# k8s
 server:
     port: 8080
    
@@ -26,7 +94,7 @@ spring:
                 # browser : http://server.xxxxx.shop/user-service/users/signIn
                 # inner   : http://server.xxxxx.shop/users/signIn
                 - StripPrefix=1 
-              uri: lb://user-service
+              uri: http://user-service
 
             - id: product-service
               predicates: 
@@ -36,7 +104,7 @@ spring:
                 # browser : http://server.xxxxx.shop/product-service/product/create
                 # inner   : http://server.xxxxx.shop/product/signIn
                 - StripPrefix=1 
-              uri: lb://product-service
+              uri: http://product-service
 
             - id: order-service
               predicates: 
@@ -46,14 +114,9 @@ spring:
                 # browser : http://server.xxxxx.shop/product-service/product/create
                 # inner   : http://server.xxxxx.shop/product/signIn
                 - StripPrefix=1 
-              uri: lb://order-service
+              uri: http://order-service
                 
 jwt:
   secret: jslim-super-secret-key-for-jwt-123456789
   
 
-# eureka client user service -> eureka server
-# eureka:
-#     client:
-#         serviceUrl:
-#             defaultZone: http://localhost:8761/eureka/
